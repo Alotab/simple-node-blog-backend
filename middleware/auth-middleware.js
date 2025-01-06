@@ -4,6 +4,7 @@ const authMiddleware = (req, res, next)=>{
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(" ")[1];
 
+
     if(!token){
         res.status(401).json({
             success: false,
@@ -14,16 +15,16 @@ const authMiddleware = (req, res, next)=>{
 
     // Decode the token from the headers
     try{
-        const verifyToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
-        console.log(decodedTokenInfo);
+        const verifyTokenInfo = jwt.verify(token, process.env.JWT_SECRET_KEY);
+        console.log(verifyTokenInfo);
 
-        req.userInfo = verifyToken
+        req.userInfo = verifyTokenInfo;
         next();
 
     }catch(error){
         res.status(500).json({
             success : false,
-            message : "Access denied, No Token provided. Please Log in"
+            message : "No Token provided. Please Log in"
         });
     }
 }

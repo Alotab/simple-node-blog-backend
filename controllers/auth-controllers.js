@@ -108,6 +108,29 @@ const changePassword = async(req, res)=> {
             });
         }
 
+        //check if old password is correct
+        const isPasswordMatch = await bcrypt.compare(oldPassword, user.password);
+
+        if(!isPasswordMatch){
+            return res.status(400).json({
+                success : false,
+                message : "Password doesn't match!. Please try again"
+            })
+        }
+
+        // hash new password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+        // update user password
+        user.password = hashedPassword;
+        await user.save();
+
+        res.status(200).json({
+            success : true,
+            message : "Password changed successfully"
+        })
+
     }catch(error){
         console.log(error);
         res.status(500).json({
@@ -115,7 +138,7 @@ const changePassword = async(req, res)=> {
             message : 'Some error occured, Please try again!'
         });
     }
-}
+};
 
 module.exports = {
     registerUser,
