@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const connectionToDB = require("./database/db");
+const authRoutes= require('./routes/auth-routes');
 
 
 // connect to monogo database
@@ -14,7 +15,7 @@ const port = process.env.PORT || 3000
 app.use(express.json());
 
 // connect to endpoints
-
+app.use('/api/auth', authRoutes);
 
 
 app.listen(port, ()=>{
