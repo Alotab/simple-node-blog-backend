@@ -89,7 +89,6 @@ const loginUser = async(req, res)=>{
     }
 };
 
-
 const changePassword = async(req, res)=> {
     try{
 
