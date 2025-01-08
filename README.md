@@ -18,10 +18,6 @@ This project is a backend application built with Node.js, Express, and MongoDB. 
 - Database:
   - MongoDB is used for storing Users and Blog data.
 
-## Technologies Used
-
-- ###Node.js###: JavaScript runtime for building the backend.
-
 ## Installation
 
 1.  Clone the repository:
@@ -55,4 +51,5 @@ This project is a backend application built with Node.js, Express, and MongoDB. 
     ```
     docker-compose up --build
     ```
+
     The backend will be available at http://localhost:3000.
