@@ -1,0 +1,20 @@
+FROM node:23-alpine3.20
+
+# Set working directory to /app
+WORKDIR /app
+
+# copy package.json to /app
+COPY package*.json .
+
+# copy dependencies
+COPY  . .
+
+
+# run npm install to install dependencies
+RUN npm install
+
+# expose port 3000
+EXPOSE 3000
+
+# npm run start to run the app
+CMD [ "npm", "run", "dev", "start" ]
