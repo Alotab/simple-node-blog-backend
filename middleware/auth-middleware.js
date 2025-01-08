@@ -16,7 +16,7 @@ const authMiddleware = (req, res, next)=>{
     // Decode the token from the headers
     try{
         const verifyTokenInfo = jwt.verify(token, process.env.JWT_SECRET_KEY);
-        console.log(verifyTokenInfo);
+        // console.log(verifyTokenInfo);
 
         req.userInfo = verifyTokenInfo;
         next();
