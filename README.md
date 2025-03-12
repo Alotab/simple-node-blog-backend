@@ -43,13 +43,3 @@ This project is a backend application built with Node.js, Express, and MongoDB. 
     npm run dev
     ```
     The application will run on http://localhost:3000 (or the port defined in the .env file).
-
-## Docker Setup (Optional)
-
-    If you prefer using Docker, you can build and run the application inside a container.
-
-    ```
-    docker-compose up --build
-    ```
-
-    The backend will be available at http://localhost:3000.
